@@ -1,7 +1,7 @@
 @extends('pages.home')
 @section('main')
 <link rel="stylesheet" href="css/details.css">
-
+@include('admin.partials.message')
 
 					<div id="wrap-inner">
 						<div id="product-info">
@@ -76,7 +76,7 @@
 
                                     @endswitch
 
-                                <p class="add-cart text-center"><a href="{{'showcart-'.$item->id}}">Đặt hàng online</a></p>
+                                <p class="add-cart text-center"><a href="{{'/addcart-'.$item->id}}">Đặt hàng online</a></p>
 								</div>
 							</div>
 						</div>

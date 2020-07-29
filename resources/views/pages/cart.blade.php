@@ -3,9 +3,11 @@
 <link rel="stylesheet" href="css/cart.css">
 					<div id="wrap-inner">
 						<div id="list-cart">
-							<h3>Giỏ hàng</h3>
+                            <h3>Giỏ hàng</h3>
+                            @if(count(Cart::getContent())>=1)
 							<form>
 								<table class="table table-bordered .table-responsive text-center">
+
 									<tr class="active">
 										<td width="11.111%">Ảnh mô tả</td>
 										<td width="22.222%">Tên sản phẩm</td>
@@ -16,28 +18,28 @@
                                     </tr>
                                     @foreach($items as $item)
 									<tr>
-										<td><img class="img-responsive" src="<?= 'data:image;base64,' . $item->img?>"></td>
-                                    <td>{{$item->name}}</td>
+									    <td><img class="img-responsive" height="200px" width="150px" src="images/product/{{ $item->attributes->image }}"></td>
+                                        <td>{{$item->name}}</td>
 										<td>
 											<div class="form-group">
-												<input class="form-control" type="number" value="{{$item->quantity}}">
+                                            <input class="form-control" id="quantity" type="number" value="{{$item->quantity}}" min="1" max="100" onchange="updateCart({{$item->id}})">
 											</div>
 										</td>
-										<td><span class="price">{{number_format($item->price,0,',','.',).'đ'}}</span></td>
-										<td><span class="price">{{number_format($item->price*$item->quantity,0,',','.',).'đ'}}</span></td>
-										<td><a href="#">Xóa</a></td>
+										<td><span class="price">{{number_format($item->price,0,',','.',).'VND'}}</span></td>
+										<td><span class="price">{{number_format($item->price*$item->quantity,0,',','.',).'VND'}}</span></td>
+										<td><a href="/removecart-{{$item->id}}">Xóa</a></td>
 									</tr>
                                     @endforeach
 								</table>
 								<div class="row" id="total-price">
 									<div class="col-md-6 col-sm-12 col-xs-12">
-											Tổng thanh toán: <span class="total-price">50.000.000 đ</span>
+											Tổng thanh toán: <span class="total-price">{{ number_format($total) }} VND</span>
 
 									</div>
 									<div class="col-md-6 col-sm-12 col-xs-12">
-										<a href="#" class="my-btn btn">Mua tiếp</a>
-										<a href="#" class="my-btn btn">Cập nhật</a>
-										<a href="#" class="my-btn btn">Xóa giỏ hàng</a>
+										<a href="/" class="my-btn btn">Mua tiếp</a>
+										<a href="" class="my-btn btn">Cập nhật</a>
+
 									</div>
 								</div>
 							</form>
@@ -45,7 +47,7 @@
 
 						<div id="xac-nhan">
 							<h3>Xác nhận mua hàng</h3>
-							<form>
+							<form method="post">
 								<div class="form-group">
 									<label for="email">Email address:</label>
 									<input required type="email" class="form-control" id="email" name="email">
@@ -64,9 +66,19 @@
 								</div>
 								<div class="form-group text-right">
 									<button type="submit" class="btn btn-default">Thực hiện đơn hàng</button>
-								</div>
+                                </div>
+                                @csrf
 							</form>
-						</div>
+                        </div>
+                        @else
+                        <h2>Giỏ hàng rỗng</h2>
+                        @endif
 					</div>
-
+<script>
+    function updateCart(id)
+    {
+      let qty= document.getElementById('')
+        console.log(qty);
+    }
+</script>
 @endsection

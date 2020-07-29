@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Category;
 use App\Http\Requests\CategoryRequest;
+use App\Category;
 class CategoryController extends Controller
 {
-
     public function index()
     {
         $data = Category::all();
@@ -70,3 +70,5 @@ class CategoryController extends Controller
         return redirect()->route('cate.trash')->with('success', "Đã xóa hoàn toàn danh mục $category->name !");
     }
 }
+
+

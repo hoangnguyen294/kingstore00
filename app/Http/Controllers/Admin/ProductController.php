@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
-use Illuminate\Http\Response;
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductRequest;
 use App\Product;
 use App\Category;
-use App\Http\Requests\ProductRequest;
 use Str;
 class ProductController extends Controller
 {
-
     public function index()
     {
         $products = Product::all();

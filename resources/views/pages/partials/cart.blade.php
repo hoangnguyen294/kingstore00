@@ -22,8 +22,8 @@
 
             </div>
             <div id="cart" class="col-md-2 col-sm-12 col-xs-12">
-                <a class="display" href="#">Giỏ hàng</a>
-                <a href="#"></a>
+                <a class="display" href="/cart">Giỏ hàng</a>
+            <a href="/cart">{{ Cart::getContent()->count() }}</a>
             </div>
         </div>
     </div>
