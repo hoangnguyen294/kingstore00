@@ -181,7 +181,7 @@
                                         @error('description')
                                         <div class="alert alert-danger">{{ $errors->first('description') }}</div>
                                         @enderror
-                                        <textarea class="form-control" name="description" id="description">{!!$product->name!!}</textarea>
+                                        <textarea class="form-control" name="description" id="description">{!!$product->description!!}</textarea>
 									</div>
 									<div class="form-group" >
 										<label>Bảo hành</label>
