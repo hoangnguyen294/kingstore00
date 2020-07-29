@@ -73,6 +73,7 @@ class CartController extends Controller
         $cart = Cart::getContent();
         $total = Cart::getSubTotal();
         $categories = Category::all();
+        Cart::clear();
         return view('pages.email',compact('info','cart','total','categories'));
     }
 
